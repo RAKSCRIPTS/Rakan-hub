@@ -65,7 +65,7 @@ gui.IgnoreGuiInset = true
 gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 pcall(function()
     if syn and syn.protect_gui then syn.protect_gui(gui) end
-    if get_hidden_gui then gui.Parent = get_hidden_gui() else gui.Parent = CoreGui end
+    gui.Parent = LocalPlayer:WaitForChild("PlayerGui")
 end)
 
 -- ==========================================================
@@ -749,8 +749,10 @@ do
         main.BackgroundTransparency = v and 0.3 or 0
     end)
     makeButton(SettingsPage, "Reload Hub", function()
-        gui:Destroy()
-    end)
+    game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
+end)
+        
+    
     local info = Instance.new("TextLabel")
     info.Size = UDim2.new(1, 0, 0, 40)
     info.BackgroundColor3 = Theme.BgInput
@@ -776,7 +778,7 @@ local function setOpen(v)
             Size = UDim2.fromOffset(360, 480),
             Position = UDim2.new(0.5, -180, 0.5, -240),
         }, 0.18)
-        if not activeTab and tabs["Player"] then
+        if tabs["Player"] then
             for n, t in pairs(tabs) do
                 t.Page.Visible = (n == "Player")
                 if n == "Player" then
