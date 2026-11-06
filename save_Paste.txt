@@ -71,12 +71,12 @@ end)
 -- ==========================================================
 -- ANTI-DETECT (real stubs, multi-path)
 -- ==========================================================
-local ok_syn, syn_protect = pcall(function() return syn and syn.protect_gui end)
-if ok_syn and syn_protect then
-    pcall(syn.protect_gui, gui)
-elseif get_hidden_gui then
-    pcall(function() gui.Parent = get_hidden_gui() end)
-end
+-- local ok_syn, syn_protect = pcall(function() return syn and syn.protect_gui end)
+-- if ok_syn and syn_protect then
+--    pcall(syn.protect_gui, gui)
+-- elseif get_hidden_gui then
+--    pcall(function() gui.Parent = get_hidden_gui() end)
+-- end
 
 local RealWalkSpeed, RealJumpPower = 16, 50
 local HumanoidSpoof = setmetatable({}, {__mode = "k"})
@@ -845,4 +845,4 @@ makeDraggable(toggle, toggle)
 pcall(function()
     if setclipboard then setclipboard("https://discord.gg/rakan") end
 end)
-print("[Rakan Hub] Loaded in " .. tostring(math.floor(os.clock()*1000)) .. "ms |
+print("[Rakan Hub] Loaded in " .. tostring(math.floor(os.clock()*1000)) .. "ms | Mobile ready.")
